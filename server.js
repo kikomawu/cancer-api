@@ -16,7 +16,7 @@ app.post('/predict', upload.single('image'), async (req, res) => {
         const imageBuffer = req.file.buffer;
 
         // Load model from Google Cloud Storage
-        const model = await tf.loadLayersModel('https://storage.googleapis.com/your-bucket-name/model.json');
+        const model = await tf.loadLayersModel('https://storage.googleapis.com/rifki-bucket-model/model.json');
 
         // Preprocess the image
         const image = tf.node.decodeImage(imageBuffer).resizeNearestNeighbor([224, 224]).expandDims(0).toFloat();
